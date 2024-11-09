@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: ganesh-replicaset
+  namespace: ganesh-ns
+  labels:
+    name: ganesh
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      name: ganesh
+  template: 
+    metadata:
+      name: replica-set
+      namespace: ganesh-ns
+      labels:
+        name: ganesh
+    spec:
+      containers:
+      - name: normal-container
+        image: nginx:perl
+        ports:
+        - containerPort: 80
+    
