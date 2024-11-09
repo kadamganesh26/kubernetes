@@ -1,0 +1,20 @@
+  apiVersion: v1
+  kind: Pod
+  metadata:
+    name: pvc-pod
+    namespace: ganesh-ns
+    
+  spec:
+    volumes:
+    -  name: webserver-volume
+       persistentVolumeClaim: 
+         claimName: ganesh-pvc
+    containers: 
+    - name: webservercontainer
+      image: nginx
+      ports:
+      - containerPort: 80
+      volumeMounts: 
+      - name: webserver-volume 
+        mountPath: /usr/share/nginx/html
+        

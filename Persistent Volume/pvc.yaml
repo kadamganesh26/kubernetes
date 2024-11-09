@@ -1,0 +1,16 @@
+  apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    name: ganesh-pvc
+    namespace: ganesh-ns
+  spec:
+    accessModes: 
+    - ReadWriteMany
+    resources: 
+      requests:
+        storage: 10Gi
+    selector:
+      matchLabels:
+        name: webcache
+    storageClassName:  dhondoo-store
+       
