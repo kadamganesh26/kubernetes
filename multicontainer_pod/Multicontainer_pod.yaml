@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+    name: prabhat-pod
+    namespace: prabhat
+spec: 
+    containers:
+    - image: nginx
+      name: nginx-continer
+      ports: 
+      -  containerPort:	80
+    - image: linuxserver/firefox:131.0.2
+      name: firefox-continer
+      ports: 
+      -  containerPort:	3000
+
+
+
+
+
