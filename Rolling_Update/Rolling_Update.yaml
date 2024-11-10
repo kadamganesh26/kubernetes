@@ -5,25 +5,25 @@
     namespace: ganesh-ns
 
   spec:
-    replicas: 20
+    replicas: 3
     selector:
       matchLabels:
         name: ganesh
     strategy:
+      type: RollingUpdate
       rollingUpdate:
-      maxSurge: 2
-      maxUnavailable: 1 
-      type: rollingUpdate
+        maxSurge: 2
+        maxUnavailable: 1 
     template:
       metadata:
         labels:
           name: ganesh
-        name: nginx-pod
+        name: netflix-pod
         namespace: ganesh-ns
       spec:
         containers:
-        - name: nginx-container
-          image: nginx:perl
+        - name: netflix-container
+          image: devopsinsiders/netflix-clone:latest
           ports:
           - containerPort: 80
         

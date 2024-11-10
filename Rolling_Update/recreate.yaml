@@ -1,0 +1,22 @@
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: deployment-recreate
+    namespace: ganesh-ns
+  spec:
+    replicas: 10
+    selector: 
+      matchLabels:
+        name: ganesh
+    strategy:
+      type: Recreate
+    template:	
+      metadata:
+        labels:
+          name: ganesh
+      spec:
+        containers: 
+        - name: nginx-pod
+          image: nginx:perl
+          ports:
+            - containerPort: 80
