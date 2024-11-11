@@ -1,0 +1,30 @@
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata: 
+    name: pod-deployment
+    namespace: ganesh-ns
+  spec: 
+    replicas: 10
+    selector:
+       matchLabels:
+         app: web
+    template:
+      metadata: 
+        labels:
+          app: web
+        name: nginx-pod
+        namespace: ganesh-ns
+      spec:
+        containers:
+        - name: nginx-pod
+          image: nginx
+          ports:
+          - containerPort: 80
+
+
+    
+    
+      
+    
+        
+
