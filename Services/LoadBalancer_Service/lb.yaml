@@ -1,0 +1,14 @@
+  apiVersion: v1
+  kind: Service
+  metadata:
+    name: lb-service
+    namespace: ganesh-ns
+    labels:
+      app: web
+  spec:
+    ports:
+    - port: 5050
+      targetPort: 80
+    selector: 
+      app: web
+    type: LoadBalancer
