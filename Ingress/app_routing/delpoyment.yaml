@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  labels:
+    app: web
+  name: approuting-deployment
+  namespace: app-store
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: web
+  strategy: 
+    rollingUpdate: 
+      maxSurge: 4
+      maxUnavailable: 1  
+  template: 
+    metadata: 
+      labels: 
+        app: web
+      name: netflix-pod
+      namespace: app-store
+    spec:
+      containers:
+      - name: netflix-container
+        image: devopsinsiders/netflix-clone
+        ports: 
+        - containerPort: 80
