@@ -1,12 +1,11 @@
   apiVersion: v1
   kind: Service
   metadata:
-    name: netlix-svc
+    name: netflix-svc
   spec:
     ports:
-    - port: 5021
+    - port: 3200
       targetPort: 80
     selector:
      app: netflix
-    type: LoadBalancer
-  
+    

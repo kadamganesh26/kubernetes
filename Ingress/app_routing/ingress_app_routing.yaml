@@ -1,0 +1,18 @@
+apiVersion:  networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: appruoute-ingress-rule
+  namespace: app-store
+spec: 
+  ingressClassName: webapprouting.kubernetes.azure.com
+  rules: 
+  - host: app.raghavcorporation.online
+    http:
+      paths:
+      - backend: 
+          service: 
+            name: netflix-devployment-svc
+            port: 
+              number: 9008
+        path: /
+        pathType: Prefix
