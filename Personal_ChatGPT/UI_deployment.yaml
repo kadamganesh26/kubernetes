@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ui-deployment
+  labels:
+    app: web-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-ui
+  template:
+    metadata:
+      labels:
+        app: web-ui
+    spec:
+      containers:
+      - name: web-ui
+        image: ghcr.io/open-webui/open-webui:main
+        env: 	
+        - name: OLLAMA_BASE_URL
+          value: http://10.0.169.102
+          value: http://10.0.169.102
+        ports:
+        - containerPort: 8080
