@@ -1,0 +1,87 @@
+KIND:       Service
+VERSION:    v1
+
+DESCRIPTION:
+    Service is a named abstraction of software service (for example, mysql)
+    consisting of local port (for example 3306) that the proxy listens on, and
+    the selector that determines which pods will answer requests sent through
+    the proxy.
+    
+FIELDS:
+  apiVersion	<string>
+  kind	<string>
+  metadata	<ObjectMeta>
+    annotations	<map[string]string>
+    creationTimestamp	<string>
+    deletionGracePeriodSeconds	<integer>
+    deletionTimestamp	<string>
+    finalizers	<[]string>
+    generateName	<string>
+    generation	<integer>
+    labels	<map[string]string>
+    managedFields	<[]ManagedFieldsEntry>
+      apiVersion	<string>
+      fieldsType	<string>
+      fieldsV1	<FieldsV1>
+      manager	<string>
+      operation	<string>
+      subresource	<string>
+      time	<string>
+    name	<string>
+    namespace	<string>
+    ownerReferences	<[]OwnerReference>
+      apiVersion	<string> -required-
+      blockOwnerDeletion	<boolean>
+      controller	<boolean>
+      kind	<string> -required-
+      name	<string> -required-
+      uid	<string> -required-
+    resourceVersion	<string>
+    selfLink	<string>
+    uid	<string>
+  spec	<ServiceSpec>
+    allocateLoadBalancerNodePorts	<boolean>
+    clusterIP	<string>
+    clusterIPs	<[]string>
+    externalIPs	<[]string>
+    externalName	<string>
+    externalTrafficPolicy	<string>
+    healthCheckNodePort	<integer>
+    internalTrafficPolicy	<string>
+    ipFamilies	<[]string>
+    ipFamilyPolicy	<string>
+    loadBalancerClass	<string>
+    loadBalancerIP	<string>
+    loadBalancerSourceRanges	<[]string>
+    ports	<[]ServicePort>
+      appProtocol	<string>
+      name	<string>
+      nodePort	<integer>
+      port	<integer> -required-
+      protocol	<string>
+      targetPort	<IntOrString>
+    publishNotReadyAddresses	<boolean>
+    selector	<map[string]string>
+    sessionAffinity	<string>
+    sessionAffinityConfig	<SessionAffinityConfig>
+      clientIP	<ClientIPConfig>
+        timeoutSeconds	<integer>
+    type	<string>
+  status	<ServiceStatus>
+    conditions	<[]Condition>
+      lastTransitionTime	<string> -required-
+      message	<string> -required-
+      observedGeneration	<integer>
+      reason	<string> -required-
+      status	<string> -required-
+      type	<string> -required-
+    loadBalancer	<LoadBalancerStatus>
+      ingress	<[]LoadBalancerIngress>
+        hostname	<string>
+        ip	<string>
+        ipMode	<string>
+        ports	<[]PortStatus>
+          error	<string>
+          port	<integer> -required-
+          protocol	<string> -required-
+

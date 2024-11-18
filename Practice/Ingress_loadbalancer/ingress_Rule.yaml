@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata: 
+    name: netflix-igress-rule
+    namespace: web-ns
+spec:
+  ingressClassName: nginx
+  rules: 	
+  - host: netflix-raghavcorporation.online
+    http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: netflix-service
+              port:
+                number: 80
