@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  labels: 
+    app: routing
+  name: applicationgw-rule
+  namespace: hostbase-ns
+spec:
+  ingressClassName: webapprouting.kubernetes.azure.com
+  rules:
+  - host: webapprouting.raghavcorporation.online
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: applicationgw-service
+            port:
+              number: 80
+            

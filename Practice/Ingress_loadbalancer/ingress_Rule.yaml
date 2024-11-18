@@ -6,13 +6,13 @@ metadata:
 spec:
   ingressClassName: nginx
   rules: 	
-  - host: netflix-raghavcorporation.online
+  - host: netflix.raghavcorporation.online
     http:
-        paths:
-        - path: /
-          pathType: Prefix
-          backend:
-            service:
-              name: netflix-service
-              port:
-                number: 80
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: netflix-service
+            port:
+              number: 80

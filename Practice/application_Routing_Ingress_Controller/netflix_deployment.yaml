@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: routing
+  name: app-routing-deployment
+  namespace: hostbase-ns
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: routing
+  template:
+    metadata:
+      labels:
+        app: routing
+    spec:
+      containers:
+      - name: netflix-container
+        image: devopsinsiders/netflix-clone
+        ports:
+        - containerPort: 80
+      
+        
+
