@@ -20,4 +20,3 @@ spec:
         image: devopsinsiders/netflix-clone
         ports: 
         - containerPort: 80
-
