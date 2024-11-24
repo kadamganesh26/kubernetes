@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
-metadata:
+metadata: 
   labels:
-    app: routing
-  name: app-routing-deployment
-  namespace: hostbase-ns
+    app: appgetway
+  name: appgetway-deployment
+  namespace: appgetway
 spec:
   replicas: 10
-  selector:
+  selector: 
     matchLabels:
-      app: routing
-  template:
+      app: appgetway
+  template: 
     metadata:
-      labels:
-        app: routing
-    spec:
+      labels: 
+        app: appgetway
+    spec: 
       containers:
       - name: netflix-container
         image: devopsinsiders/netflix-clone
