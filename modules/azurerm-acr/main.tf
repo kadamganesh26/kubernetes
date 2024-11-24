@@ -6,15 +6,6 @@ resource "azurerm_container_registry" "acr-block" {
   location            = each.value.location
   sku                 = each.value.sku
   admin_enabled       = each.value.admin_enabled
-
-  dynamic "georeplications" {
-    for_each = each.value.geo_replications
-    content {
-    location                = each.value.geo_replication.location
-    zone_redundancy_enabled = each.value.zone_redundancy_enabled
-    tags                    = each.value.geo_replication.tags
-  }
- }
 }
 
 

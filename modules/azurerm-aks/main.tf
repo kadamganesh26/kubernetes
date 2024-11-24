@@ -7,6 +7,7 @@ resource "azurerm_resource_group" "aks_rg_blk" {
 
 #AKS details bock
 resource "azurerm_kubernetes_cluster" "example" {
+  for_each = var.aks_clusters
   name                = each.value.aks_name
   location            = each.value.aks_location
   resource_group_name = each.value.resource_group_name

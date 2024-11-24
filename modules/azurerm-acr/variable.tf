@@ -11,7 +11,3 @@ variable "acr_clusters" {
     tags               = string
   }))
 }
-
-variable "" {
-  
-}
