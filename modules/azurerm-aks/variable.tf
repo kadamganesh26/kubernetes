@@ -1,13 +1,13 @@
 variable "aks_clusters" {
-  description = "A map of AKS clusters, each containing details for the AKS resource group and the cluster itself"
+  description = "A map of AKS cluster configurations."
   type = map(object({
-    aks_rg_name        = string
-    aks_location       = string
-    aks_name           = string
-    resource_group_name = string
-    dns_prefix         = string
-    node_count         = number
-    vm_size            = string
-    tags               = string
+    aks_rg_name         = string   # Name of the resource group for the AKS cluster
+    aks_location        = string   # Location for the AKS cluster
+    aks_name            = string   # Name of the AKS cluster
+    resource_group_name = string   # Name of the resource group for the AKS cluster
+    dns_prefix          = string   # DNS prefix for the AKS cluster
+    node_count          = number   # Number of nodes in the default node pool
+    vm_size             = string   # VM size for the default node pool
+    tags                = string   # Tags for the AKS cluster
   }))
 }

@@ -1,8 +1,8 @@
-variable "rg" {
-     description = "A map of acr clusters, each containing details for the acr resource group and the cluster itself"
+variable "child_rg" {
+  description = "A map of configurations for creating multiple Azure resource groups."
   type = map(object({
-    name        = string
-    location       = string
-    tags               = string
+    name     = string   # Name of the resource group
+    location = string   # Location of the resource group
+    tags      = map(string)  # Tags for the resource group (key-value pairs)
   }))
 }
