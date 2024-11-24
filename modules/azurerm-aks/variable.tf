@@ -1,7 +1,3 @@
-variable "var.aks_clusters" {
-  type = map()
-}
-
 variable "aks_clusters" {
   description = "A map of AKS clusters, each containing details for the AKS resource group and the cluster itself"
   type = map(object({
