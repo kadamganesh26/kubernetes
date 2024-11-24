@@ -8,7 +8,7 @@ resource "azurerm_container_registry" "acr-block" {
   admin_enabled       = each.value.admin_enabled
 
   dynamic "georeplications" {
-    for_each = var.geo_replications
+    for_each = each.value.geo_replications
     content {
     location                = each.value.geo_replication.location
     zone_redundancy_enabled = each.value.zone_redundancy_enabled
@@ -16,6 +16,7 @@ resource "azurerm_container_registry" "acr-block" {
   }
  }
 }
+
 
 
 
