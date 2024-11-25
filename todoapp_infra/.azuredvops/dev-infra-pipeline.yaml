@@ -1,0 +1,4 @@
+name: dev-todo-infra-pipeline
+trigger: 
+- main
+pool: 
