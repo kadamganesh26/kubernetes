@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todoappui
+spec:
+  selector:
+    matchLabels:
+      app: todoappui
+  template:
+    metadata:
+      labels:
+        app: todoappui
+    spec:
+      containers:
+      - name: todoappui
+        image: containerregistry4dec2024.azurecr.io/todoui:v1
+        resources:
+        ports:
+        - containerPort: 80

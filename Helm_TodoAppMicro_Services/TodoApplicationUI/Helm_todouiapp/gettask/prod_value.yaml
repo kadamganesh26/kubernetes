@@ -1,0 +1,5 @@
+deploymentName: prod-ui
+replicasCount: 102
+imgeName: prod-ui
+imageTag: latest
+imageRepository: todoappcontainer.azurecr.io

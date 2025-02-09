@@ -1,0 +1,5 @@
+deploymentName: deletetask
+replicasCount: 111
+imgeName: deletetask
+imageTag: latest
+url: todoappcontainer.azurecr.io

@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prod-ui
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: prod-ui
+  template:
+    metadata:
+      labels:
+        app: prod-ui
+    spec:
+      containers:
+      - name: prod-ui
+        image: todoappcontainer.azurecr.io/ui:latest
+        ports:
+        - containerPort: 80
