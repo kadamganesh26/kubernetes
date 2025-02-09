@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: addtask
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: addtask
+  template:
+    metadata:
+      labels:
+        app: addtask
+    spec:
+      containers:
+      - name: myapp
+        env:
+        - name: CONNECTION_STRING
+          value: "Driver={ODBC Driver 17 for SQL Server};Server=tcp:devopsinssrv1.database.windows.net,1433;Database=todoappdb;Uid=devopsadmin;Pwd=P@ssw01rd@123;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;"
+        image: todoappcontainer.azurecr.io/addtask:latest
+        ports:
+        - containerPort: 8000
+      

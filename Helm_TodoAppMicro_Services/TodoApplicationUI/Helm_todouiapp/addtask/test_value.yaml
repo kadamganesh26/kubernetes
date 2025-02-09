@@ -1,0 +1,3 @@
+deploymentName: addtask
+replicasCount: 10
+image: myapp

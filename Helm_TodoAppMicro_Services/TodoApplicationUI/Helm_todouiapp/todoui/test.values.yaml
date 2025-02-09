@@ -1,0 +1,5 @@
+deploymentName: ui
+replicasCount: 100
+imgeName: ui
+imageTag: latest
+imageRepository: todoappcontainer.azurecr.io

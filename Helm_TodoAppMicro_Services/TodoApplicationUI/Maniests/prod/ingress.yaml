@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: prod-ui
+  labels:
+    name: prod-ui
+spec:
+  ingressClassName: azure-application-gateway
+  rules:
+  - host: todo.dev28.online
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: prod-ui
+            port: 
+              number: 80

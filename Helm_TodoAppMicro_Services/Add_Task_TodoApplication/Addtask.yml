@@ -1,0 +1,33 @@
+name: imagebuild
+pool: Lenovo-laptop
+trigger: none
+stages:
+  # - stage: Build   #image will create and push to acr as well
+  #   jobs: 
+  #   - job:  
+  #     displayName: Building image
+  #     steps:
+  #       - task: Docker@2
+  #         inputs:
+  #           containerRegistry: 'ConnectionToACR'
+  #           repository: 'addtask'
+  #           command: 'buildAndPush'
+  #           Dockerfile: '**/Dockerfile'
+  #           tags: |
+  #             $(Build.BuildId)
+  #             latest
+  - stage: Deploy   #Deploy the image using using Kubernetes deployment
+    jobs:
+    - job: 
+      displayName: Deployment Of addtask Application
+      steps:
+      - task: Kubernetes@1
+        displayName: Deployment
+        inputs:
+          connectionType: 'Kubernetes Service Connection'
+          kubernetesServiceEndpoint: 'TodoAKS'
+          command: 'apply'
+          useConfigurationFile: true
+          configuration: '$(Build.SourcesDirectory)/manifests'
+          secretType: 'dockerRegistry'
+          containerRegistryType: 'Azure Container Registry'

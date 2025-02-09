@@ -1,0 +1,36 @@
+name: Create_Task
+pool: Lenovo-laptop
+trigger: none
+
+stages: 
+- stage:  
+  displayName: Building the application Image
+  jobs:
+  - job: 
+    displayName: Building_Task
+    steps:
+    - task: Docker@2
+      inputs:
+        containerRegistry: 'ConnectionToACR'
+        repository: 'gettask'
+        command: 'buildAndPush'
+        Dockerfile: '**/Dockerfile'
+        tags: |
+          $(Build.BuildId)
+          latest
+        
+- stage: Deployment 
+  jobs:
+  - job: 
+    displayName: Deploying the Application
+    steps:
+    - task: Kubernetes@1
+      inputs:
+        connectionType: 'Kubernetes Service Connection'
+        kubernetesServiceEndpoint: 'TodoAKS'
+        command: 'apply'
+        useConfigurationFile: true
+        configuration: '$(Build.SourcesDirectory)/manifests'
+        secretType: 'dockerRegistry'
+        containerRegistryType: 'Azure Container Registry'
+  

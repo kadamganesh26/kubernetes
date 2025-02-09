@@ -1,0 +1,34 @@
+name: delete_task
+pool: Lenovo-laptop
+trigger: none
+stages:
+  # - stage: 
+  #   displayName: Building-Delete-Task-Image
+  #   jobs: 
+  #   - job: 
+  #     displayName: delete-task
+  #     steps:
+  #     - task: Docker@2
+  #       inputs:
+  #         containerRegistry: 'ConnectionToACR'
+  #         repository: 'deletetask'
+  #         command: 'buildAndPush'
+  #         Dockerfile: '**/Dockerfile'
+  #         tags: |
+  #           $(Build.BuildId)
+  #           latest
+  - stage: 
+    displayName: Application_Deployment
+    jobs: 
+    - job: 
+      displayName: Application Deployment
+      steps:
+      - task: Kubernetes@1
+        inputs:
+          connectionType: 'Kubernetes Service Connection'
+          kubernetesServiceEndpoint: 'TodoAKS'
+          command: 'apply'
+          useConfigurationFile: true
+          configuration: '$(Build.SourcesDirectory)/manifests'
+          secretType: 'dockerRegistry'
+          containerRegistryType: 'Azure Container Registry'
